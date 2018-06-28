@@ -1,0 +1,23 @@
+A reminder of the five public methods
+
+  FiloTree(string leaves[], int depth);
+  void dump( ) const;
+  static bool compare( const FiloTree &A, const FiloTree &B);
+  ~FiloTree( ); 
+  FiloTree(string fileName);
+
+
+My FiloNode is below. Use, adapt or ignore as desired.
+
+struct FiloNode 
+{
+  string lable;
+  FiloNode *left, *right;
+
+  FiloNode(string lab="X", FiloNode *L=nullptr, FiloNode *R=nullptr) 
+     : lable(lab), left(L), right(R)
+  { }
+};
+
+
+A binary tree is proper/full if every internal node has two children

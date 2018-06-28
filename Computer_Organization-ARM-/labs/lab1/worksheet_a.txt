@@ -1,0 +1,56 @@
+Eric Paulz
+CPSC 2311 Lab 1
+
+1. Run "./acc_x86". Explain what the simulator is doing in the fetch, decode, execute
+    cycle. (10 points)
+	
+	fetch:   MAR gets information from the program counter to learn the current memory address
+			   MDR gets memory address from MAR and stores the data inside it
+			   IR stores all the info needed for the current instruction
+			   Program counter is incremented
+			   I think that maybe this is where Pass 1 happens?
+
+	decode:  Load instruction in IR is translated and turned into machine code (Pass 2)
+
+	execute: MAR gets info from PC to learn the current memory address
+				MAR tells MDR which memory addresses have data in them to be stored
+				PC increments
+				MDR talks to accumulator machine and executes the program
+
+2. You should be using one of the branching instructions in your my_loop.m source code (ex: ble0, bgt0, etc.). At which position in memory (i.e. program counter value) is your branch instruction? (10 points)
+	
+	27
+
+
+3. Explain the difference between MDR and MAR. (10 points)
+	
+	MAR holds memory addresses and MDR holds the actual data.
+
+
+4. Run the three versions of the program using acc and record the statistics. (10 points)
+	
+	source1.m : instructions executed = 98
+					instruction fetches   = 195
+					data reads  			 = 54
+					data writes 			 = 22
+	source2.m : instructions executed = 76
+					instruction fetches   = 151
+					data reads 				 = 43
+					data writes 			 = 22
+	my_loop.m : instructions executed = 86
+					instruction fetches	 = 171
+					data reads				 = 53
+					data writes				 = 22
+
+5. Explain the differences in statistics. (15 points)
+
+	All of these stats will affect the efficiency of the program.  All 3 used the same amount
+	of data writes.  Other than that, source2.m had fewer of all the others.
+
+6. Which version do you think is better and why? (15 points)
+
+	source2.m because it has fewer instructions, fewer fetches, and fewer data reads.
+	I think this means that the program will be more efficient than the others.
+
+7. Fill in the blanks in worksheet_b.txt. (30 points)
+

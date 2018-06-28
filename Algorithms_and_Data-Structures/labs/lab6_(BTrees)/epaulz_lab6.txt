@@ -1,0 +1,43 @@
+/*
+  Eric Paulz
+  CPSC 2121
+  Lab 6
+*/
+
+1. Suppose the numbers 1 up to 10 are inserted in a B-tree of order 3. Draw the tree that BTree produces. (Hint: run the code with simple driver.)
+                            5
+                         /     \
+                      3,4      8,9
+                     /        /    \
+                   1,2       6,7   10
+
+2. For the B-tree from question 1, what would be printed out if one printed out the data in the leaves from left to right?
+      1, 2, 6, 7, 10
+
+3. The word static appears in the definition of BTreeNode. What does this do?
+      It means that 'MAX' belongs to the class itself and can not be used by objects of the class
+
+4. Consider the code for BTreeNode. Explain the meaning of the line of code:
+   virtual void dump(int depth) = 0; (You might need to read the chapter on Inheritance.)
+      Allows us to define a function in a base class and have a function of the same name and type
+      in a derived class called when a user calls the base class function.
+
+5. The signature for the insert method in BLeaf contains int &newKey. What is this used for? What happens to the newKey if the method returns nullptr?
+      It is used to place another key into a node of the tree.
+      If nullptr is returned, that means that that node can't contain any more keys and it will not be added.
+
+6. Explain the algorithm used in the insert method in BInternal.
+      It checks to see if the current node can contain any more keys.  If so, the newKey is added.
+      If it cannot contain any more, it moves on to check the node's sibling to see if it is full.
+      If not, it will add the newKey to the end of the node's values.  It will keep doing this in order
+      until the bottom of the tree.
+
+7. The code for dump in BTree class has the line
+   root->dump(0);
+   Why the zero?
+      The zero indicates the depth of the tree.  It will print out the values of the tree starting from the root (0).
+
+8. Discuss what is good and bad about this implementation.
+      The implementation is good because we can efficiently find a value in the tree without going too deep.
+
+      The implementation is bad because there are no comments and because the runtime is slow.
